@@ -1,0 +1,37 @@
+-----
+2025-07-27 07:36:27 - Incoming Request to get_bl_field_value.php
+Received vsl_num: 253
+Requested field: cargo_name
+Running query: SELECT `cargo_name` FROM vessels_bl WHERE vsl_num = 253 ORDER BY id DESC LIMIT 1
+Success: cargo_name = SOYBEAN EXTRACTION (MEAL)
+-----
+2025-07-27 07:36:32 - Incoming Request to get_bl_field_value.php
+Received vsl_num: 253
+Requested field: cargo_name
+Running query: SELECT `cargo_name` FROM vessels_bl WHERE vsl_num = 253 ORDER BY id DESC LIMIT 1
+Success: cargo_name = SOYBEAN EXTRACTION (MEAL)
+-----
+2025-07-27 07:39:08 - Incoming Request to get_bl_field_value.php
+Received vsl_num: 253
+Requested field: shipper_name
+Running query: SELECT `shipper_name` FROM vessels_bl WHERE vsl_num = 253 ORDER BY id DESC LIMIT 1
+Success: shipper_name = ADM EXPORT CO
+-----
+2025-07-27 08:16:21 - Incoming Request to get_bl_field_value.php
+Received vsl_num: 253
+Requested field: shipper_address
+Running query: SELECT `shipper_address` FROM vessels_bl WHERE vsl_num = 253 ORDER BY id DESC LIMIT 1
+Success: shipper_address = 4666 FARIES PARKWAY
+DECATUR, ILLINOIS 62526
+-----
+2025-07-27 08:16:23 - Incoming Request to get_bl_field_value.php
+Received vsl_num: 253
+Requested field: shipper_name
+Running query: SELECT `shipper_name` FROM vessels_bl WHERE vsl_num = 253 ORDER BY id DESC LIMIT 1
+Success: shipper_name = ADM EXPORT CO
+-----
+2025-07-27 08:16:24 - Incoming Request to get_bl_field_value.php
+Received vsl_num: 253
+Requested field: cargo_name
+Running query: SELECT `cargo_name` FROM vessels_bl WHERE vsl_num = 253 ORDER BY id DESC LIMIT 1
+Success: cargo_name = SOYBEAN EXTRACTION (MEAL)

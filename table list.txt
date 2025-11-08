@@ -1,0 +1,26 @@
+.
+DROP TABLE IF EXISTS agent;
+DROP TABLE IF EXISTS backups;
+DROP TABLE IF EXISTS bins;
+DROP TABLE IF EXISTS cargokeys;
+DROP TABLE IF EXISTS cnf;
+DROP TABLE IF EXISTS cnf_contacts;
+DROP TABLE IF EXISTS companies;
+DROP TABLE IF EXISTS consignee_contacts;
+DROP TABLE IF EXISTS export_logs;
+DROP TABLE IF EXISTS loadport;
+DROP TABLE IF EXISTS nationality;
+DROP TABLE IF EXISTS passwords;
+DROP TABLE IF EXISTS stevedore;
+DROP TABLE IF EXISTS stevedore_contacts;
+DROP TABLE IF EXISTS surveycompany;
+DROP TABLE IF EXISTS surveyors;
+DROP TABLE IF EXISTS useraccess;
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS vendor_contacts;
+DROP TABLE IF EXISTS vessels;
+DROP TABLE IF EXISTS vessels_bl;
+DROP TABLE IF EXISTS vessels_cargo;
+DROP TABLE IF EXISTS vessels_importer;
+DROP TABLE IF EXISTS vessels_surveyor;
+DROP TABLE IF EXISTS vessel_details;

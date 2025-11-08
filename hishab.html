@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>খরচ হিসাব ক্যালকুলেটর</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background-color: #f9f9f9; }
+    .card { margin-top: 20px; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="text-center my-4">
+    <h2>📊 খরচ হিসাব ক্যালকুলেটর</h2>
+  </div>
+
+  <div id="people">
+    <div class="row g-2 person mb-2">
+      <div class="col-6">
+        <input type="text" class="form-control name" placeholder="নাম">
+      </div>
+      <div class="col-6">
+        <input type="number" class="form-control amount" placeholder="টাকা দিয়েছে">
+      </div>
+    </div>
+  </div>
+
+  <div class="d-grid gap-2 d-md-block mb-3">
+    <button onclick="addPerson()" class="btn btn-outline-primary">➕ আরেকজন যুক্ত করুন</button>
+    <button onclick="calculate()" class="btn btn-primary">📊 হিসাব করুন</button>
+  </div>
+
+  <div id="result" class="card p-3 d-none"></div>
+</div>
+
+<script>
+  function addPerson() {
+    const div = document.createElement('div');
+    div.className = 'row g-2 person mb-2';
+    div.innerHTML = `
+      <div class="col-6">
+        <input type="text" class="form-control name" placeholder="নাম">
+      </div>
+      <div class="col-6">
+        <input type="number" class="form-control amount" placeholder="টাকা দিয়েছে">
+      </div>
+    `;
+    document.getElementById('people').appendChild(div);
+  }
+
+  function calculate() {
+    const names = Array.from(document.getElementsByClassName('name')).map(el => el.value.trim());
+    const amounts = Array.from(document.getElementsByClassName('amount')).map(el => parseFloat(el.value.trim()) || 0);
+
+    const total = amounts.reduce((sum, a) => sum + a, 0);
+    const avg = total / names.length;
+
+    let details = `<h5 class="text-primary">মোট খরচ: ${total.toFixed(2)} টাকা</h5>`;
+    details += `<h6 class="text-success">প্রতি জনের ভাগ: ${avg.toFixed(2)} টাকা</h6><hr>`;
+
+    const balances = names.map((name, i) => {
+      const balance = (amounts[i] - avg).toFixed(2);
+      return { name, balance: parseFloat(balance) };
+    });
+
+    details += `<ul class="list-group mb-3">`;
+    balances.forEach(p => {
+      if (p.balance > 0) {
+        details += `<li class="list-group-item"><b>${p.name}</b> পাবে ${p.balance.toFixed(2)} টাকা</li>`;
+      } else if (p.balance < 0) {
+        details += `<li class="list-group-item"><b>${p.name}</b> দেবে ${(Math.abs(p.balance)).toFixed(2)} টাকা</li>`;
+      } else {
+        details += `<li class="list-group-item"><b>${p.name}</b> এর কোনো পাওনা বা দেনা নেই</li>`;
+      }
+    });
+    details += `</ul>`;
+
+    const creditors = balances.filter(p => p.balance > 0);
+    const debtors = balances.filter(p => p.balance < 0);
+
+    details += `<h6 class="text-secondary">কে কাকে কত টাকা দিবে:</h6><ul class="list-group">`;
+
+    let i = 0, j = 0;
+    while (i < debtors.length && j < creditors.length) {
+      let debtor = debtors[i];
+      let creditor = creditors[j];
+
+      let amount = Math.min(creditor.balance, Math.abs(debtor.balance));
+      details += `<li class="list-group-item"><b>${debtor.name}</b> ➡ <b>${creditor.name}</b> কে ${amount.toFixed(2)} টাকা দিবে</li>`;
+
+      debtor.balance += amount;
+      creditor.balance -= amount;
+
+      if (Math.abs(debtor.balance) < 0.01) i++;
+      if (Math.abs(creditor.balance) < 0.01) j++;
+    }
+
+    details += `</ul>`;
+
+    const resultDiv = document.getElementById('result');
+    resultDiv.classList.remove('d-none');
+    resultDiv.innerHTML = details;
+  }
+</script>
+</body>
+</html>
