@@ -4400,7 +4400,7 @@
 	    $msl_num = $row1['msl_num'];
 	    $vessel = $row1['vessel_name'];
 
-	    $path = "forwadings/auto_forwardings/" . $msl_num . ".MV. " . $vessel . "/";
+	    $path = "forwadings/auto_forwardings/" . $msl_num . ".MV. " . $vessel . "/igm/";
 	    createpath($path);
 
 	    require_once 'vendor/autoload.php';
@@ -4903,8 +4903,98 @@
 
 
 
+	// export waybill xml
+	function export_waybill_xml($vsl_num = 251){
+		GLOBAL $db,$my,$company,$forwading,$thisvessel; $filename = "";
 
+		// Vessel details
+		$msl_num = $thisvessel['msl_num'];
+		$vessel_name = $thisvessel['vessel_name'];
 
+		$vessels_bl = mysqli_query($db, "SELECT * FROM vessels_bl WHERE vsl_num = '$vsl_num' ");
+	    $line_num = 0;
+
+	    // Loop through BOL data
+	    while ($bl_row = mysqli_fetch_assoc($vessels_bl)) {
+	        // $line_num = $line_num + 1;
+	        $bl_num = sanitize_filename($bl_row['bl_num']); //
+	        $cargo_name = $bl_row['cargo_name']; //
+	        $cargo_qty = $bl_row['cargo_qty']; //
+	        $qty = $cargo_qty * 1000; //
+	        $shipper_name = $bl_row['shipper_name']; //
+	        $shipper_address = $bl_row['shipper_address']; //
+	        $importerid = $bl_row['receiver_name'];
+	        $importer_bin = allData('bins', $importerid, 'bin');
+	        $bankid = $bl_row['bank_name'];
+	        $bank_bin = allData('bins', $bankid, 'bin');
+	        $load_portid = $bl_row['load_port'];
+	        $load_portcode = allData('loadport', $load_portid, 'port_code');
+
+	        $desc_portId = $bl_row['desc_port'];
+	        $desc_portcode = allData('loadport', $desc_portId, 'port_code');
+
+	        $bldeperture_date = deperture_info($vsl_num, "deperture_date");
+
+	        if ($desc_portcode != "BDCGP") {continue;}
+	        $line_num = $line_num + 1;
+
+	        $total_bls = mysqli_num_rows(mysqli_query($db, "SELECT * FROM vessels_bl WHERE vsl_num = '$vsl_num' "));
+			$ttlqty = ttlcargoqty($vsl_num);
+			$total_cargo_qty = formatInternationalNumber($ttlqty*1000);
+
+	        // the filename/forwading comes form infostore
+	        $exten = ".docx"; $filename = "WAY BILL ".$bl_num;
+	    	
+	    	$templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor("forwadings/templets/".$company['templet']."/WAY-BILL".$exten);
+			
+			// set pc forwading values
+	    	$templateProcessor->setValues(
+				[
+					"companycustomcode" => $company['customcode'], 
+					"msl_num" => $thisvessel['msl_num'], 
+					"bl_num" => $bl_num, 
+					"line_num" => $line_num, 
+					"qty" => $qty, //
+					"cargo_name" => $cargo_name, //
+					"shipper_name" => $shipper_name, 
+					"shipper_address" => $shipper_address, 
+					"importer_bin" => $importer_bin, 
+					"bank_bin" => $bank_bin, 
+					"package_code" => $thisvessel['packages_codes'],
+					"loadport" => $load_portcode, 
+					"desc_portcode" => $desc_portcode, 
+					"vessel" => $thisvessel['vessel_name'], 
+					"vsl_nationality" => strtoupper($thisvessel['nationality']), 
+					"vsl_nationalitycode" => strtoupper($thisvessel['nationalitycode']), 
+		    		// for igm{generalsegment}
+		    		"deperture_date" => $deperture_date = deperture_date($vsl_num), 
+		    		"arrivaldate_forigm" => gmarrivaldate($vsl_num) 
+				]
+			); 
+
+	    	$new_filename = $vsl_num.".MV. ".$thisvessel['vessel_name']." ".$filename;
+			// $path = "forwadings/auto_forwardings/".$msl_num.".MV. ".$thisvessel['vessel_name']."/";
+	    	$path = "forwadings/auto_forwardings/".$msl_num.".MV. ".$thisvessel['vessel_name']."/igm/"; 
+			$save = $path.$filename.$exten;
+			
+			// Create folder if not exist
+			createpath($path);
+			// save file
+			$templateProcessor->saveAs($save);
+			echo "XML file '$bl_num.docs' generated successfully.</br>";
+	    }
+	    // checks all the files in that folder then creates zip
+	    createzip($path, "igm_full_cargo_MV. ".$vessel_name);
+	    
+	    // move the zip file to downloadable folder
+	    $sourceFile = $path."igm_full_cargo_MV. ".$vessel_name.".zip";
+	    $destinationFolder = "forwadings/auto_forwardings/".$msl_num.".MV. ".$vessel_name."/";
+		$destinationFile = $destinationFolder . basename($sourceFile);
+	    rename($sourceFile, $destinationFile);
+	    // delete the igm folder
+	    deleteIfEmpty($destinationFolder."igm");
+	    header("location: vessel_details.php?forwadingpage=$vsl_num#downloads");
+	}
 
 
 	// igm xml
@@ -5052,7 +5142,7 @@
 
 	    // Destination Segment
 	    $destination_segment = $general_segment->addChild('Destination_segment');
-	    $destination_segment->addChild('Place_of_destination_code', 'BDCGP');
+	    $destination_segment->addChild('Place_of_destination_code', $company_portcode);
 	    // $destination_segment->addChild('Place_of_destination_name', 'Chittagong');
 
 	    // Carrier Segment
@@ -5145,7 +5235,7 @@
 
 	        // Customs Office Segment
 	        $customs_office_segment = $identification_segment->addChild('Customs_office_segment');
-	        $customs_office_segment->addChild('Code', '301');
+	        $customs_office_segment->addChild('Code', $customcode);
 	        // $customs_office_segment->addChild('Name', 'Custom House, Chattogram');
 
 	        // BOL specific Segment
@@ -5181,7 +5271,7 @@
 	        $Place_of_loading_segment->addChild('Code', $load_portcode);
 
 	        $Place_of_unloading_segment = $Bol_specific_segment->addChild('Place_of_unloading_segment');
-	        $Place_of_unloading_segment->addChild('Code', 'BDCGP');
+	        $Place_of_unloading_segment->addChild('Code', $company_portcode);
 
 	        $Packages_segment = $Bol_specific_segment->addChild('Packages_segment');
 	        $Packages_segment->addChild('Package_type_code', $packages_codes);
@@ -5288,6 +5378,7 @@
 
 	    // checks all the files in that folder then creates zip
 	    createzip($path, "igm_xml_format_MV. ".$vessel_name);
+
 	    // move the zip file to downloadable folder
 	    $sourceFile = $path."igm_xml_format_MV. ".$vessel_name.".zip";
 	    $destinationFolder = "forwadings/auto_forwardings/".$msl_num.".MV. ".$vessel_name."/";
@@ -5334,42 +5425,6 @@
 
 		// Step 2: Reset and loop again
 		$result->data_seek(0);
-		// $consigneewisecargo = "";
-		// // Step 4: Loop through each receiver_name
-		// while ($row = $result->fetch_assoc()) {
-		//     $receiver_name = $row['receiver_name'];
-		//     // $total_qty = number_format($row['total_qty']); // format with comma
-		//     // Format quantity with or without decimal
-		//     if ($hasDecimal) {
-		//         $total_qty = number_format($row['total_qty'], 3);
-		//     } else {
-		//         $total_qty = number_format($row['total_qty']);
-		//     }
-
-		//     // Step 5: Find the corresponding name from bins table
-		//     $bin_sql = "SELECT name FROM bins WHERE id = ?";
-		//     $bin_stmt = $db->prepare($bin_sql);
-		//     $bin_stmt->bind_param("s", $receiver_name);
-		//     $bin_stmt->execute();
-		//     $bin_result = $bin_stmt->get_result();
-
-		//     if ($bin_row = $bin_result->fetch_assoc()) {
-		//         $name = $bin_row['name'];
-		//         // ✅ Step 6: Check length and replace LIMITED if needed
-		//         if (strlen($name) > 28) {
-		//             $name = str_replace("LIMITED", "LTD", $name);
-		//         }
-
-		//         // // Pad name manually if not using tab stops in Word
-        // 		// $name = str_pad($name, 40); // 40-character width name column
-
-		//         // Step 6: Append to final string
-		//         $consigneewisecargo .= "$name\tB/L QTTY \t$total_qty MT<w:br/>";
-		//     }
-
-
-		//   //  $bin_stmt->close();
-		// }
 
 		$consigneewisecargo = "";
 
@@ -5500,6 +5555,8 @@
     	$templateProcessor->setValues(
 			[
 				"companyain" => $company['ain'],
+				"companycustomcode" => $company['customcode'],
+				"companyportcode" => $company['port'],
 				"companyname" => $company['companyname'],
 				"companytelephone" => $company['telephone'],
 				"companyaddress" => $company['address'],
@@ -5578,7 +5635,12 @@
 		); 
 
     	$new_filename = $vsl_num.".MV. ".$thisvessel['vessel_name']." ".$filename;
-		$path = "forwadings/auto_forwardings/".$msl_num.".MV. ".$thisvessel['vessel_name']."/";
+
+    	if ($purpose == "igmfullcargo") {
+    		$path = "forwadings/auto_forwardings/".$msl_num.".MV. ".$thisvessel['vessel_name']."/igm/";
+    	}else{$path = "forwadings/auto_forwardings/".$msl_num.".MV. ".$thisvessel['vessel_name']."/";}
+
+		
 		// vessel name
 		$renm = " of ".$msl_num.".MV. ".$thisvessel['vessel_name'];
 		// $save = $path.$new_filename.$exten;

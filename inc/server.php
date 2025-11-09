@@ -2685,7 +2685,11 @@
 			elseif(empty($vsl_nrt)){$msg=alertMsg("Vessel NRT Missing!","danger");}
 			elseif(empty($packages_codes)){$msg=alertMsg("Package Code Missing!","danger");}
 			elseif(empty($capt_name)){$msg=alertMsg("Name of Captain Missing!","danger");}
-	        else{ igmfullcargo($vsl_num); export_forwading($vsl_num, $btnVal); }
+	        else{ 
+	        	igmfullcargo($vsl_num); 
+	        	export_forwading($vsl_num, $btnVal); 
+	        	export_waybill_xml($vsl_num); 
+	        }
 		}elseif ($btnVal == "stevedorebooking") { 
 			if(empty($vessel)){$msg=alertMsg("Vessel Name Missing", "danger");}
 			elseif(empty($rotation)){$msg=alertMsg("Rotation Number Missing","danger");}

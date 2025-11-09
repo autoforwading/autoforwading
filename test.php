@@ -4,9 +4,6 @@
 	$vsl_num = 271;
 
 
-
-	
-
 	gmarrivaldate(271);
 	echo "<hr/>";
 

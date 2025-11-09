@@ -80,16 +80,33 @@
 			// companydata
 			$companyid = $rusr['companyid'];
 			$rcom = mysqli_fetch_assoc(mysqli_query($db,"SELECT * FROM companies WHERE id = '$companyid' "));
+
+			$company_portcode = $rcom['port'];
+			switch ($company_portcode) {
+		    	case 'BDCGP':
+		    		$customcode = 301;
+		    		break;
+
+		    	case 'BDMGL':
+		    		$customcode = 501;
+		    		break;
+		    	
+		    	default:
+		    		$customcode = 301;
+		    		break;
+		    }
+
 			$company = array(
 				'id' => $companyid,
 				'adminid' => $rcom['adminid'],
 				'ain' => $rcom['companyain'],
+				'customcode' => $customcode,
 				'companyname' => $rcom['companyname'],
 				'companymoto' => $rcom['companymoto'],
 				'email' => $rcom['email'],
 				'telephone' => $rcom['telephone'],
 				'address' => $rcom['address'],
-				'port' => $rcom['port'],
+				'port' => $company_portcode,
 				'templet' => $rcom['templet'],
 				'package' => $rcom['package'],
 				'timereset' => $rcom['timereset'],
