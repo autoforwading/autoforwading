@@ -586,7 +586,7 @@
               <div class="col-lg-12">
                 <div class="block">
                   <div class="title">
-                    <strong>Update Vessel </strong>
+                    <strong>Update Vessel Info </strong>
                     <?php if (allData('useraccess',$my['office_position'],'vessel_ctrl')) { ?>
                     <a 
                       onClick="javascript: return confirm('Please confirm deletion');" 
