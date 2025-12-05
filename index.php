@@ -452,8 +452,6 @@
                     <table 
                       id="example" 
                       class="table table-dark table-striped table-sm"
-                      data-show-export="false"
-                      data-show-columns="false"
                     >
                     
 

@@ -52,6 +52,8 @@
     <link rel="stylesheet" href="css/cssfont.css">
     <!-- theme stylesheet-->
     <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
+    <!-- <link rel="stylesheet" href="css/style.light.css" id="theme-stylesheet"> -->
+    <link rel="stylesheet" href="css/style.light.soft.full.css" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="css/custom.css">
     <!-- Favicon-->
@@ -79,6 +81,11 @@
         <div class="container-fluid d-flex align-items-center justify-content-between">
 
           <div class="navbar-header">
+            
+            <!-- Theme toggle button (put inside the navbar or header) -->
+            <button id="themeToggle" class="btn" aria-label="Toggle theme" title="Toggle theme">
+              <span id="themeToggleIcon">🌤️</span>
+            </button>
             <!-- Navbar Header-->
             
 
@@ -137,6 +144,7 @@
           </div>
 
           <div class="list-inline no-margin-bottom">
+            
             <?php if(isset($_SESSION['email']) && $_SESSION['email'] == 'skturan2405@gmail.com'){ ?>    
             <!-- <div class="list-inline-item">
               <a onClick="javascript: return confirm('Are you sure you want to destroy all data?');"  href="index.php?destroy=destroy" class="nav-link">
@@ -149,6 +157,12 @@
                 Switch <i class="bi bi-arrow-clockwise"></i>
               </a>
             </div> -->
+
+            <div class="list-inline-item">
+              <a href="#" id="syncDB" class="nav-link">
+                Sync <i class="fas fa-sync"></i>
+              </a>
+            </div>
             <?php } ?>
 
         

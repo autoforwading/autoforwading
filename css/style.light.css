@@ -1,0 +1,137 @@
+/* ==========================================================
+   LIGHT THEME OVERRIDE — OPTION A (Pure Light)
+   ========================================================== */
+
+/* ----------- GENERAL ----------- */
+body, .page-content, .block, .page-header, .statistic-block, 
+.stats-2-block .stats-2, .stats-3-block .stats-3,
+.checklist-block .item:nth-of-type(even),
+.messages-block a.message,
+.table-striped tbody tr:nth-of-type(odd),
+.modal-content,
+.login-page .form-holder .form {
+    background: #ffffff !important;
+    color: #333 !important;
+}
+
+.text-gray, .text-gray-light, .text-gray-dark {
+    color: #555 !important;
+}
+
+/* ----------- NAVBAR ----------- */
+nav.navbar {
+    background: #ffffff !important;
+    color: #333 !important;
+    border-bottom: 1px solid #ddd !important;
+}
+
+nav.navbar a.nav-link,
+nav.navbar .dropdown-item.message {
+    color: #333 !important;
+}
+
+nav.navbar .dropdown-item:hover {
+    background: #f2f2f2 !important;
+}
+
+/* ----------- SIDEBAR ----------- */
+nav#sidebar {
+    background: #f8f9fa !important;
+    color: #333 !important;
+    border-right: 1px solid #ddd !important;
+}
+
+nav#sidebar li a {
+    color: #333 !important;
+}
+
+nav#sidebar li a:hover {
+    background: #e9ecef !important;
+    color: #DB6574 !important;
+}
+
+nav#sidebar li.active > a {
+    background: #e2e6ea !important;
+    color: #DB6574 !important;
+}
+
+nav#sidebar li.active::before {
+    background: #DB6574 !important;
+}
+
+/* ----------- CARDS / BLOCKS ----------- */
+.block {
+    background: #ffffff !important;
+    border: 1px solid #e2e2e2 !important;
+}
+
+.card {
+    background: #ffffff !important;
+    border: 1px solid #e2e2e2 !important;
+}
+
+/* ----------- INPUTS / FORMS ----------- */
+.form-control,
+.custom-select,
+input.input-material {
+    background: #ffffff !important;
+    border: 1px solid #ced4da !important;
+    color: #333 !important;
+}
+
+.form-control:focus,
+.custom-select:focus,
+input.input-material:focus {
+    border-color: #DB6574 !important;
+    background: #ffffff !important;
+}
+
+.input-group-text {
+    background: #f0f0f0 !important;
+    color: #333 !important;
+    border-color: #ced4da !important;
+}
+
+/* ----------- TABLES ----------- */
+.table {
+    background: #ffffff !important;
+    color: #333 !important;
+}
+
+.table td, .table th {
+    border-color: #e5e5e5 !important;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f8f9fa !important;
+}
+
+.table-striped tbody tr:hover {
+    background-color: #e9ecef !important;
+}
+
+/* ----------- MODAL ----------- */
+.modal-content {
+    background: #ffffff !important;
+    color: #333 !important;
+    border: 1px solid #ddd !important;
+}
+
+.modal-header, .modal-footer {
+    border-color: #e2e2e2 !important;
+}
+
+/* ----------- LOGIN PAGE ----------- */
+.login-page .form-holder .form {
+    background: #ffffff !important;
+}
+
+.login-page .form-holder .info {
+    background: #DB6574 !important;
+}
+
+/* ----------- MISC BACKGROUNDS ----------- */
+.bg-gray-dark,
+.bg-gray-darker {
+    background: #f8f9fa !important;
+}

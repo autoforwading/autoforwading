@@ -1,0 +1,415 @@
+/* ==========================================================
+   FULL LIGHT THEME OVERRIDE — OPTION B (Soft Modern Light)
+   Applies only when <body class="light-theme"> is present
+   ========================================================== */
+
+/* THEME WRAPPER: everything inside applies only for .light-theme */
+body.light-theme {
+  --bg-main: #f4f5f7;
+  --bg-card: #ffffff;
+  --bg-muted: #f0f2f5;
+  --text-main: #333333;
+  --text-muted: #666666;
+  --border: #e3e6ea;
+  --accent: #DB6574;
+  color: var(--text-main) !important;
+  background: var(--bg-main) !important;
+}
+
+/* small transition for smoother switching */
+body.light-theme, body.light-theme * {
+  transition: background-color .18s ease, color .18s ease, border-color .18s ease, box-shadow .18s ease;
+}
+
+/* ============ PAGE & LAYOUT ============ */
+body.light-theme .page-content,
+body.light-theme .page-content.active {
+  background: var(--bg-main) !important;
+  color: var(--text-main) !important;
+}
+
+body.light-theme .page-header,
+body.light-theme .page-header * {
+  background: var(--bg-muted) !important;
+  color: var(--text-main) !important;
+  border: 0 !important;
+}
+
+/* blocks & cards */
+body.light-theme .block,
+body.light-theme .card,
+body.light-theme .statistic-block,
+body.light-theme .card-body,
+body.light-theme .card-header,
+body.light-theme .card-footer {
+  background: var(--bg-card) !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04) !important;
+}
+
+/* default background utilities */
+body.light-theme .bg-gray-dark,
+body.light-theme .bg-gray-darker {
+  background: var(--bg-muted) !important;
+}
+
+/* breadcrumb text */
+body.light-theme .breadcrumb,
+body.light-theme .breadcrumb a,
+body.light-theme .breadcrumb li {
+  color: var(--text-muted) !important;
+}
+
+/* ============ NAVBAR ============ */
+/* Make navbar light */
+body.light-theme nav.navbar,
+body.light-theme .navbar {
+  background: var(--bg-card) !important;
+  color: var(--text-main) !important;
+  border-bottom: 1px solid var(--border) !important;
+  box-shadow: none !important;
+}
+
+/* links and dropdowns inside navbar */
+body.light-theme nav.navbar a,
+body.light-theme nav.navbar .nav-link,
+body.light-theme nav.navbar .navbar-brand,
+body.light-theme nav.navbar .dropdown-item {
+  color: var(--text-main) !important;
+}
+
+/* navbar dropdown menus */
+body.light-theme nav.navbar .dropdown-menu,
+body.light-theme .dropdown-menu {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text-main) !important;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06) !important;
+}
+
+/* dropdown hover */
+body.light-theme nav.navbar .dropdown-item:hover,
+body.light-theme .dropdown-menu a:hover {
+  background: var(--bg-muted) !important;
+  color: var(--text-main) !important;
+}
+
+/* search overlay */
+body.light-theme nav.navbar .search-inner {
+  background: rgba(244,245,247,0.98) !important;
+}
+body.light-theme nav.navbar .search-inner input {
+  color: var(--text-main) !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+
+/*navbar sidebar toggle button*/
+/* APPLY ONLY IN LIGHT THEME */
+body.light-theme nav.navbar .sidebar-toggle {
+  background: #ffffff !important;
+  color: #333333 !important;
+  border: 2px solid #d0d4d9 !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08) !important;
+}
+
+
+/* ============ SIDEBAR ============ */
+/* For Option B the sidebar is light/soft too */
+body.light-theme nav#sidebar,
+body.light-theme .sidebar {
+  background: var(--bg-muted) !important;
+  color: var(--text-main) !important;
+  border-right: 1px solid var(--border) !important;
+}
+
+/* Sidebar links */
+body.light-theme nav#sidebar a,
+body.light-theme nav#sidebar li a {
+  color: var(--text-main) !important;
+}
+
+/* active / hover states */
+body.light-theme nav#sidebar li a:hover,
+body.light-theme nav#sidebar li.active > a {
+  background: #e6eaed !important;
+  color: var(--accent) !important;
+}
+
+/* submenu items */
+body.light-theme nav#sidebar li li a {
+  background: transparent !important;
+  color: var(--text-muted) !important;
+}
+body.light-theme nav#sidebar li li a:hover {
+  background: #eef0f2 !important;
+  color: var(--accent) !important;
+}
+
+/* avatar border fix */
+body.light-theme nav#sidebar .avatar {
+  border: 3px solid #fff !important;
+}
+
+/* ============ TABLES (explicit fixes) ============ */
+/* Make sure tables are always light */
+body.light-theme .table,
+body.light-theme table {
+  background: var(--bg-card) !important;
+  color: var(--text-main) !important;
+  border-color: var(--border) !important;
+}
+
+/* table header */
+body.light-theme .table thead th,
+body.light-theme .table thead td {
+  background: var(--bg-muted) !important;
+  color: var(--text-main) !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+/* table rows */
+body.light-theme .table tbody tr,
+body.light-theme .table-striped tbody tr {
+  background: var(--bg-card) !important;
+  color: var(--text-main) !important;
+}
+
+/* striped rows (light variant) */
+body.light-theme .table-striped tbody tr:nth-of-type(odd) {
+  background: #f7f7f9 !important; /* soft stripe */
+  color: var(--text-main) !important;
+}
+
+/* hovered row */
+body.light-theme .table tbody tr:hover,
+body.light-theme .table-striped tbody tr:hover,
+body.light-theme .table-hover tbody tr:hover {
+  background: #eef0f2 !important;
+}
+
+/* bordered tables */
+body.light-theme .table-bordered td,
+body.light-theme .table-bordered th {
+  border-color: var(--border) !important;
+}
+
+/* specific overrides for any dark rules from original file */
+body.light-theme .table td,
+body.light-theme .table th {
+  border-color: var(--border) !important;
+  color: var(--text-main) !important;
+}
+
+/* ============ FORMS, INPUTS, SELECTS ============ */
+body.light-theme .form-control,
+body.light-theme input,
+body.light-theme textarea,
+body.light-theme select,
+body.light-theme .custom-select,
+body.light-theme .form-select,
+body.light-theme input.input-material {
+  background: var(--bg-card) !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--border) !important;
+  outline: none !important;
+}
+
+/* placeholder colors */
+body.light-theme .form-control::-webkit-input-placeholder,
+body.light-theme .form-control::-moz-placeholder,
+body.light-theme .form-control:-ms-input-placeholder {
+  color: #9a9ea3 !important;
+}
+
+/* disabled fields */
+body.light-theme .form-control:disabled,
+body.light-theme .form-control[readonly] {
+  background: #f3f4f6 !important;
+  color: #9a9ea3 !important;
+}
+
+/* focus */
+body.light-theme .form-control:focus,
+body.light-theme .custom-select:focus,
+body.light-theme input:focus,
+body.light-theme textarea:focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 1px rgba(219,101,116,0.12) !important;
+}
+
+/* input-group text */
+body.light-theme .input-group-text {
+  background: #f0f2f5 !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--border) !important;
+}
+
+/* custom-select arrow svg: ensure it is dark */
+body.light-theme .custom-select,
+body.light-theme .custom-select:focus {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23333' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") !important;
+  background-color: var(--bg-card) !important;
+}
+
+/* ============ BUTTONS ============ */
+body.light-theme .btn {
+  background: var(--bg-card) !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--border) !important;
+}
+
+/* primary button keeps accent color */
+body.light-theme .btn-primary {
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: #fff !important;
+}
+body.light-theme .btn-primary:hover {
+  background: #c85161 !important;
+  border-color: #c85161 !important;
+}
+
+/* outline primary */
+body.light-theme .btn-outline-primary {
+  color: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+body.light-theme .btn-outline-primary:hover {
+  background: var(--accent) !important;
+  color: #fff !important;
+}
+
+/* btn-dark/background utilities: make them neutral in light mode */
+body.light-theme .btn-dark,
+body.light-theme .bg-dark,
+body.light-theme .text-light {
+  background: #e9ecef !important;
+  color: var(--text-main) !important;
+}
+
+/* ============ BADGES & LABELS ============ */
+body.light-theme .badge,
+body.light-theme .badge-primary,
+body.light-theme .badge-secondary,
+body.light-theme .badge-light {
+  color: #fff !important;
+}
+
+/* ============ MODALS ============ */
+body.light-theme .modal-open .modal,
+body.light-theme .modal-open .modal .modal-content,
+body.light-theme .modal-content {
+  background: var(--bg-card) !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--border) !important;
+}
+
+body.light-theme .modal-header,
+body.light-theme .modal-footer {
+  background: var(--bg-muted) !important;
+  border-color: var(--border) !important;
+}
+
+/* ============ LOGIN PAGE ============ */
+body.light-theme .login-page .form-holder .form {
+  background: var(--bg-card) !important;
+  color: var(--text-main) !important;
+}
+
+body.light-theme .login-page .form-holder .info {
+  /* keep accent panel */
+  background: rgba(219,101,116,0.95) !important;
+  color: #fff !important;
+}
+
+/* ============ ICONS (fix white icons issue) ============ */
+/* Ensure icon fonts keep readable color in light mode */
+body.light-theme i[class*="icon-"],
+body.light-theme i[class^="icon-"],
+body.light-theme .icon,
+body.light-theme [class*="fa-"],
+body.light-theme .nav-link i,
+body.light-theme .btn i {
+  color: inherit !important;
+  opacity: 1 !important;
+  -webkit-filter: none !important;
+  filter: none !important;
+  text-shadow: none !important;
+}
+
+/* some rules in original file set :before content color — ensure inherits */
+body.light-theme i[class*="icon-"]::before,
+body.light-theme i::before,
+body.light-theme [class*="fa-"]::before {
+  color: inherit !important;
+}
+
+/* Fix navbar-dark rules that would make icons white */
+body.light-theme .navbar-dark .navbar-nav .nav-link,
+body.light-theme .navbar-dark .navbar-brand,
+body.light-theme .navbar-dark .navbar-toggler,
+body.light-theme .navbar-dark .navbar-text {
+  color: var(--text-main) !important;
+}
+
+/* ============ MISC: code, pre, tool panels ============ */
+body.light-theme code {
+  background-color: #f7f7f9 !important;
+  color: var(--accent) !important;
+  border-radius: 0.25rem !important;
+  padding: .2rem .4rem !important;
+}
+
+body.light-theme pre,
+body.light-theme pre code {
+  background: #f6f7f8 !important;
+  color: var(--text-main) !important;
+}
+
+/* ============ OVERRIDE SPECIFIC DARK CLASSES FOUND IN ORIGINAL ============ */
+/* original used .bg-gray-dark/.bg-gray-darker set to dark — override to light */
+body.light-theme .bg-gray-dark,
+body.light-theme .bg-gray-darker,
+body.light-theme .bg-cover,
+body.light-theme .bg-dark {
+  background: var(--bg-muted) !important;
+  color: var(--text-main) !important;
+}
+
+/* dropdown/demos switcher panel */
+body.light-theme #style-switch,
+body.light-theme #style-switch-button {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text-main) !important;
+}
+
+/* ensure nav tabs active background is light */
+body.light-theme .nav-tabs .nav-link.active,
+body.light-theme .nav-tabs .nav-item.show .nav-link {
+  background-color: var(--bg-card) !important;
+  color: var(--text-main) !important;
+  border-color: var(--border) !important;
+}
+
+/* catch-all to convert any remaining explicit dark backgrounds to light */
+body.light-theme [style*="background: #2d3035"],
+body.light-theme [style*="background:#2d3035"],
+body.light-theme [style*="background: #22252a"],
+body.light-theme [style*="background:#22252a"],
+body.light-theme [style*="background: rgba(45, 48, 53, 0.95)"] {
+  background: transparent !important;
+}
+
+/* VERY BROAD FALLBACK: prefer specificity only when needed */
+body.light-theme *[class*="bg-"],
+body.light-theme [class*="block"],
+body.light-theme [class*="card"],
+body.light-theme [class*="panel"] {
+  /* allow specific overrides above to win; this is just a gentle fallback */
+  background-color: transparent !important;
+}
+
+/* End of override file */

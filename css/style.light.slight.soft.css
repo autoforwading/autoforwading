@@ -1,0 +1,154 @@
+/* ==========================================================
+   LIGHT THEME OVERRIDE — OPTION C (Mixed Theme)
+   Light dashboard + slightly dark sidebar
+   ========================================================== */
+
+/* ----------- MAIN CONTENT AREA ----------- */
+body, .page-content {
+    background: #f5f6f8 !important;
+    color: #333 !important;
+}
+
+/* Content blocks */
+.block, 
+.statistic-block,
+.stats-2-block .stats-2,
+.stats-3-block .stats-3,
+.checklist-block .item:nth-of-type(even),
+.messages-block a.message,
+.modal-content,
+.login-page .form-holder .form,
+.table-striped tbody tr:nth-of-type(odd) {
+    background: #ffffff !important;
+    color: #333 !important;
+    border: 1px solid #e6e6e6 !important;
+}
+
+/* ----------- TEXT COLORS ----------- */
+.text-gray, 
+.text-gray-light,
+.text-gray-dark {
+    color: #666 !important;
+}
+
+/* ----------- NAVBAR (LIGHT) ----------- */
+nav.navbar {
+    background: #ffffff !important;
+    color: #333 !important;
+    border-bottom: 1px solid #e0e0e0 !important;
+}
+
+nav.navbar a.nav-link {
+    color: #333 !important;
+}
+
+nav.navbar a.nav-link:hover {
+    color: #DB6574 !important;
+}
+
+nav.navbar .dropdown-item:hover {
+    background: #f2f2f2 !important;
+}
+
+/* ----------- SIDEBAR (SLIGHTLY DARK) ----------- */
+nav#sidebar {
+    background: #2c3036 !important;    /* Modern dark-gray */
+    color: #cfd3d8 !important;
+    border-right: none !important;
+}
+
+nav#sidebar .sidebar-header {
+    background: #2c3036 !important;
+    color: #fff !important;
+}
+
+nav#sidebar li a {
+    color: #cfd3d8 !important;
+}
+
+nav#sidebar li a:hover {
+    background: #3a3f46 !important;
+    color: #DB6574 !important;
+}
+
+nav#sidebar li.active > a {
+    background: #3a3f46 !important;
+    color: #DB6574 !important;
+}
+
+nav#sidebar li.active::before {
+    background: #DB6574 !important;
+}
+
+/* ----------- CARDS / BLOCKS ----------- */
+.card {
+    background: #ffffff !important;
+    border: 1px solid #dcdcdc !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.06) !important;
+}
+
+/* ----------- INPUTS / FORMS ----------- */
+.form-control,
+.custom-select,
+input.input-material {
+    background: #ffffff !important;
+    border: 1px solid #d2d6dc !important;
+    color: #333 !important;
+}
+
+.form-control:focus,
+.custom-select:focus,
+input.input-material:focus {
+    border-color: #DB6574 !important;
+    background: #ffffff !important;
+    box-shadow: none !important;
+}
+
+.input-group-text {
+    background: #eef0f2 !important;
+    border-color: #d2d6dc !important;
+    color: #333 !important;
+}
+
+/* ----------- TABLES ----------- */
+.table {
+    background: #ffffff !important;
+    color: #333 !important;
+}
+
+.table td, .table th {
+    border-color: #e4e4e4 !important;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f7f7f7 !important;
+}
+
+.table-striped tbody tr:hover {
+    background-color: #ececec !important;
+}
+
+/* ----------- MODAL ----------- */
+.modal-content {
+    background: #ffffff !important;
+    color: #333 !important;
+}
+
+.modal-header, .modal-footer {
+    border-color: #dcdcdc !important;
+}
+
+/* ----------- LOGIN PAGE ----------- */
+.login-page .form-holder .form {
+    background: #ffffff !important;
+    border: 1px solid #e2e2e2 !important;
+}
+
+.login-page .form-holder .info {
+    background: #DB6574 !important;
+}
+
+/* ----------- MISC ----------- */
+.bg-gray-dark, .bg-gray-darker {
+    background: #2c3036 !important;
+}

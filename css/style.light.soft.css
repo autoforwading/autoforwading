@@ -1,0 +1,214 @@
+/* ==========================================================
+   FULL LIGHT THEME OVERRIDE — OPTION B (Soft Modern Light)
+   Covers 100% of elements from original dark CSS
+   ========================================================== */
+
+/* BODY + MAIN AREA */
+body, html {
+    background: #f4f5f7 !important;
+    color: #333 !important;
+}
+
+/* HEADERS */
+.page-header, .page-header h2, .page-header div {
+    background: #f4f5f7 !important;
+    color: #333 !important;
+}
+
+/* NAVBAR */
+nav.navbar {
+    background: #ffffff !important;
+    border-bottom: 1px solid #ddd !important;
+    color: #333 !important;
+}
+
+nav.navbar a,
+nav.navbar .nav-link,
+nav.navbar .dropdown-toggle {
+    color: #333 !important;
+}
+
+nav.navbar .dropdown-menu {
+    background: #ffffff !important;
+    border: 1px solid #ddd !important;
+}
+
+nav.navbar .dropdown-item {
+    color: #333 !important;
+}
+
+nav.navbar .dropdown-item:hover {
+    background: #eef0f2 !important;
+}
+
+/* SIDEBAR (still light for Option B) */
+#sidebar {
+    background: #f0f2f5 !important;
+    color: #333 !important;
+    border-right: 1px solid #ddd !important;
+}
+
+#sidebar a {
+    color: #333 !important;
+}
+
+#sidebar li.active > a {
+    background: #e3e5e8 !important;
+    color: #DB6574 !important;
+}
+
+/* BLOCKS + CARDS */
+.block, .card, .statistic-block,
+.stats-2-block .stats-2,
+.stats-3-block .stats-3 {
+    background: #ffffff !important;
+    border: 1px solid #e3e3e3 !important;
+    color: #333 !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05) !important;
+}
+
+/* TABLES */
+.table {
+    background: #ffffff !important;
+    color: #333 !important;
+    border-color: #e3e3e3 !important;
+}
+
+.table thead th {
+    background: #f0f2f5 !important;
+    color: #333 !important;
+    border-bottom: 1px solid #dcdcdc !important;
+}
+
+.table tbody tr {
+    background: #ffffff !important;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background: #f7f7f9 !important;
+}
+
+.table tbody tr:hover {
+    background: #e9eaec !important;
+}
+
+/* FORMS */
+.form-control,
+.custom-select,
+.form-select,
+input,
+textarea,
+select,
+input.input-material {
+    background: #ffffff !important;
+    border: 1px solid #d0d4d9 !important;
+    color: #333 !important;
+}
+
+.form-control:focus,
+.custom-select:focus,
+input:focus,
+textarea:focus,
+select:focus {
+    background: #ffffff !important;
+    border-color: #DB6574 !important;
+    box-shadow: 0 0 0 1px #DB6574 !important;
+}
+
+/* INPUT GROUP */
+.input-group-text {
+    background: #f0f2f5 !important;
+    border: 1px solid #d0d4d9 !important;
+    color: #333 !important;
+}
+
+/* BUTTONS */
+.btn {
+    border-radius: 4px !important;
+    border: 1px solid #d0d4d9 !important;
+    color: #333 !important;
+    background: #ffffff !important;
+}
+
+.btn:hover {
+    background: #eef0f2 !important;
+}
+
+.btn-primary,
+.btn-danger,
+.btn-info,
+.btn-warning,
+.btn-success {
+    color: #fff !important;
+}
+
+.btn-primary { background: #DB6574 !important; border-color: #DB6574 !important; }
+.btn-primary:hover { background: #c05160 !important; }
+
+/* BADGES */
+.badge {
+    background: #DB6574 !important;
+    color: #fff !important;
+}
+
+/* PAGINATION */
+.page-link {
+    background: #ffffff !important;
+    border: 1px solid #ddd !important;
+    color: #333 !important;
+}
+
+.page-link:hover {
+    background: #e7e9eb !important;
+}
+
+.page-item.active .page-link {
+    background: #DB6574 !important;
+    border-color: #DB6574 !important;
+    color: #fff !important;
+}
+
+/* MODALS */
+.modal-content {
+    background: #ffffff !important;
+    border: 1px solid #ddd !important;
+}
+
+.modal-header, .modal-footer {
+    background: #f4f5f7 !important;
+    border-color: #ddd !important;
+}
+
+/* ALERTS */
+.alert {
+    background: #fff !important;
+    border: 1px solid #ccc !important;
+    color: #333 !important;
+}
+
+/* LOGIN PAGE */
+.login-page .form-holder .form {
+    background: #ffffff !important;
+    border: 1px solid #ddd !important;
+}
+
+.login-page .form-holder .info {
+    background: #DB6574 !important;
+}
+
+/* MISC UTILS */
+.bg-gray-dark,
+.bg-gray-darker {
+    background: #f0f2f5 !important;
+}
+
+.messages-block a.message {
+    background: #ffffff !important;
+    border-bottom: 1px solid #eee !important;
+}
+
+/* ICON FIX – remove dark opacity */
+[class*="icon-"] {
+    opacity: 1 !important;
+    color: inherit !important;
+}

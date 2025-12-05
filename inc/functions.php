@@ -5435,7 +5435,7 @@
 
 		// Step 4: Loop through each receiver_name
 		while ($row = $result->fetch_assoc()) {
-		    $receiver_name = $row['receiver_name'];
+		    $receiver_name = str_replace("&", "&amp;", $row['receiver_name']);
 
 		    // Format quantity with or without decimal
 		    if ($hasDecimal) {
@@ -5452,7 +5452,7 @@
 		    $bin_result = $bin_stmt->get_result();
 
 		    if ($bin_row = $bin_result->fetch_assoc()) {
-		        $name = $bin_row['name'];
+		        $name = str_replace("&", "&amp;", $bin_row['name']);
 
 		        // ✅ [MODIFIED] এই condition টা ছিল তোমার code-এ।
 		        // আগের মতোই আছে, শুধু এখন এখানে replace করার বদলে শুধু flag detect করছি।
