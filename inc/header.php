@@ -150,13 +150,13 @@
               <a onClick="javascript: return confirm('Are you sure you want to destroy all data?');"  href="index.php?destroy=destroy" class="nav-link">
                 Destroy <i class="bi bi-trash"></i>
               </a>
-            </div>
+            </div> -->
 
             <div class="list-inline-item">
               <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#switchModal">
                 Switch <i class="bi bi-arrow-clockwise"></i>
               </a>
-            </div> -->
+            </div>
 
             <div class="list-inline-item">
               <a href="#" id="syncDB" class="nav-link">

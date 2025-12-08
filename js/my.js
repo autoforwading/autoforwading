@@ -168,29 +168,42 @@ $(document).ready(function(){
 })();
 
 // sync db
-document.getElementById('syncDB').addEventListener('click', function(){
+document.getElementById('syncDB').addEventListener('click', function () {
 
-  if(!confirm("Are you sure? This will replace your LOCAL database with LIVE data.")) {
-      return;
-  }
+    if (!confirm("Are you sure? This will replace your LOCAL database with LIVE data.")) {
+        return;
+    }
 
-  // 1. Fetch live data
-  fetch("https://autoforwading.com/export_live.php")
-  .then(r => r.json())
-  .then(liveData => {
+    // 1. Fetch live data from Hostinger
+    fetch("https://autoforwading.com/export_live.php")
+        .then(r => r.json())
+        .then(liveData => {
 
-    // 2. Send data to local XAMPP
-    return fetch("http://localhost/autoforwading/import_local.php", {
-      method: "POST",
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(liveData)
-    });
-  })
-  .then(r => r.text())
-  .then(response => {
-    alert("Local DB Updated Successfully!");
-  })
-  .catch(err => {
-    alert("Sync Failed: " + err);
-  });
+            // 2. Send live data to Local XAMPP
+            return fetch("http://localhost/autoforwading/import_local.php", {
+                method: "POST",
+                mode: "cors",     // <--- IMPORTANT FIX
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(liveData)
+            });
+
+            // If "cors" still fails, try:
+            /*
+            return fetch("http://localhost/autoforwading/import_local.php", {
+                method: "POST",
+                mode: "no-cors",  // <--- fallback mode
+                body: JSON.stringify(liveData)
+            });
+            */
+        })
+        .then(r => r.text())
+        .then(response => {
+            alert("Local DB Updated Successfully!");
+        })
+        .catch(err => {
+            alert("Sync Failed: " + err);
+        });
+
 });

@@ -2016,22 +2016,23 @@
 			$nm2nd = allData('vessels', $id2nd, 'vessel_name');
 
 			// 232 = swapit, 233 = 232, swapit = 233;
+			$swapit = time();
 			// first switch the vessel_details
-			$sql1 = "UPDATE vessel_details SET vsl_num = 'swapit' WHERE vsl_num = '$firstvsl' ";
+			$sql1 = "UPDATE vessel_details SET vsl_num = '$swapit' WHERE vsl_num = '$firstvsl' ";
 			$sql2 = "UPDATE vessel_details SET vsl_num = '$firstvsl' WHERE vsl_num='$secondvsl' ";
-			$sql3 = "UPDATE vessel_details SET vsl_num = '$secondvsl' WHERE vsl_num = 'swapit' ";
+			$sql3 = "UPDATE vessel_details SET vsl_num = '$secondvsl' WHERE vsl_num = '$swapit' ";
 			mysqli_query($db, $sql1); mysqli_query($db, $sql2); mysqli_query($db, $sql3);
 
 			// second switch the vessels_surveyor
-			$sql4 = "UPDATE vessels_surveyor SET vsl_num = 'swapit' WHERE vsl_num = '$firstvsl' ";
+			$sql4 = "UPDATE vessels_surveyor SET vsl_num = '$swapit' WHERE vsl_num = '$firstvsl' ";
 			$sql5 = "UPDATE vessels_surveyor SET vsl_num='$firstvsl' WHERE vsl_num='$secondvsl' ";
-			$sql6 = "UPDATE vessels_surveyor SET vsl_num ='$secondvsl' WHERE vsl_num = 'swapit' ";
+			$sql6 = "UPDATE vessels_surveyor SET vsl_num ='$secondvsl' WHERE vsl_num = '$swapit' ";
 			mysqli_query($db, $sql4); mysqli_query($db,$sql5); mysqli_query($db, $sql6);
 
 			// third switch the vessels_bl
-			$sql7 = "UPDATE vessels_bl SET $vsl_num = 'swapit' WHERE $vsl_num = '$firstvsl' ";
-			$sql8 = "UPDATE vessels_bl SET $vsl_num = '$firstvsl' WHERE $vsl_num = '$secondvsl' ";
-			$sql9 = "UPDATE vessels_bl SET $vsl_num = '$secondvsl' WHERE $vsl_num = 'swapit' ";
+			$sql7 = "UPDATE vessels_bl SET vsl_num = '$swapit' WHERE vsl_num = '$firstvsl' ";
+			$sql8 = "UPDATE vessels_bl SET vsl_num = '$firstvsl' WHERE vsl_num = '$secondvsl' ";
+			$sql9 = "UPDATE vessels_bl SET vsl_num = '$secondvsl' WHERE vsl_num = '$swapit' ";
 			mysqli_query($db, $sql7); mysqli_query($db, $sql8); mysqli_query($db, $sql9);
 
 			// forth switch the vessels
