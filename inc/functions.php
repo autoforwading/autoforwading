@@ -727,7 +727,9 @@
 		
 		while ($row = mysqli_fetch_assoc($run)) {
 			$id = $row['id']; $value = $row[$fieldName];
-			echo"<option value=\"$id\">$value</option>";
+			if ($fieldName == "vessel_name") {
+				echo"<option value=\"$id\">".$row['msl_num'].".MV. ".$value."</option>";
+			}else{echo"<option value=\"$id\">$value</option>";}
 		}
 	}
 
